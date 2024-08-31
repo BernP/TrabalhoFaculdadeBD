@@ -8,3 +8,15 @@ CREATE TABLE usuarios (
 );
 
 SELECT * FROM usuarios WHERE nome like 'Felipe%';
+
+SELECT * FROM usuarios WHERE nome LIKE 'Felipe%' AND nome LIKE '%Cruz%';
+
+SELECT * FROM usuarios WHERE nome LIKE 'Felipe%' AND nome LIKE '%Cruz%' AND endereco like 'Praca%';
+
+SELECT COUNT(nome) FROM usuarios WHERE nome like 'Luana';
+
+SELECT COUNT(nome) FROM usuarios WHERE nome like 'Luana%';
+
+SELECT nome, cep, id FROM usuarios WHERE nome like 'Luana%' order by nome;
+
+SELECT nome, cep, id FROM usuarios WHERE nome like 'Luana%' order by cep;
