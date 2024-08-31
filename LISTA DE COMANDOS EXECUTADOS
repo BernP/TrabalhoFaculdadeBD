@@ -20,3 +20,40 @@ SELECT COUNT(nome) FROM usuarios WHERE nome like 'Luana%';
 SELECT nome, cep, id FROM usuarios WHERE nome like 'Luana%' order by nome;
 
 SELECT nome, cep, id FROM usuarios WHERE nome like 'Luana%' order by cep;
+
+CREATE TABLE itens (
+	id INT PRIMARY KEY,
+	item VARCHAR(80), 
+	preco FLOAT, 
+	quantidade_restante int);
+
+select * from itens;
+
+select * from itens order by preco DESC;
+
+select * from itens where item like '%prata%' and item like '%rubi%' order by preco DESC;
+
+CREATE TABLE pedidos (
+	id integer PRIMARY KEY,
+	id_item integer, 
+	FOREIGN key (id_item) references itens(id),
+	quantidade integer,
+	data DATE, 
+	status varchar(30),
+	id_usuario integer,
+	FOREIGN key (id_usuario) references usuarios(id)
+);
+
+SELECT * FROM PEDIDOS WHERE data > '2024-01-01' and data < '2024-01-30' order by data ASC;
+
+SELECT * FROM PEDIDOS WHERE data > '2024-01-01' and data < '2024-01-30' and status <> 'pagamento pendente' order by data ASC;
+
+SELECT id_usuario, SUM(quantidade) AS total_de_pedidos FROM PEDIDOS group by id_usuario;
+
+SELECT id_usuario, SUM(quantidade) AS total_de_pedidos FROM PEDIDOS group by id_usuario order by total_de_pedidos DESC;
+
+SELECT id_usuario, SUM(quantidade) AS total_de_pedidos FROM PEDIDOS group by id_usuario having SUM(quantidade) >30 order by total_de_pedidos DESC;
+
+SELECT u.nome, SUM(p.quantidade) as quantidade_de_pedidos FROM usuarios u, pedidos p WHERE u.id = p.id_usuario GROUP BY u.nome order by SUM(p.quantidade) DESC;
+
+SELECT u.nome, SUM(p.quantidade) as quantidade_de_pedidos FROM usuarios u, pedidos p WHERE u.id = p.id_usuario and p.data > '2024-01-01' and p.data < '2024-01-30' GROUP BY u.nome order by SUM(p.quantidade) DESC;

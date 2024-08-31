@@ -31,7 +31,8 @@ quantidadeDePedidos = 10_000
 arquivo = open('comando_insert_pedidos.txt', 'w+')
 
 status = ['pagamento pendente', 'pago', 'item enviado', 'recebido']
-for x in range(quantidadeDePedidos):
+x = 0
+while x in range(quantidadeDePedidos):
 
     id_usuario = randint(0, 1999)
 
@@ -69,4 +70,5 @@ for x in range(quantidadeDePedidos):
         lista_de_itens[item_escolhido][3] -= quantidade_comprada
         codigoParaInserir = "INSERT INTO PEDIDOS (id, id_item, quantidade, data, status, id_usuario) VALUES (" + ""+str(x)+ "," + ' '+ "" + str(item_escolhido)+ "," + ' '+ ""+  str(quantidade_comprada) + "," + ' '+ "'" + data+ "', '"+status_agora +"', "+str(id_usuario) +  ');\n'
         arquivo.write(codigoParaInserir)
+        x+=1
 arquivo.close()
