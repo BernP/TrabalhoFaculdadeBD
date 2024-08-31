@@ -2007,3 +2007,5 @@ INSERT INTO USUARIOS (nome, cpf, cep, endereco, id) VALUES ('Lucas da Cruz Cruz 
 INSERT INTO USUARIOS (nome, cpf, cep, endereco, id) VALUES ('Artur Nunes da Silva', '315.339.994-47', '65935-092', 'Praca Desembargador(a) Leticia Souza - numero 289', 1997);
 INSERT INTO USUARIOS (nome, cpf, cep, endereco, id) VALUES ('Eduardo Silva Marques Cruz Silveira Costa', '213.393.266-96', '74085-426', 'Praca Sr(a). Andre Carvalho Silveira - numero 308', 1998);
 INSERT INTO USUARIOS (nome, cpf, cep, endereco, id) VALUES ('Anderson da Costa', '896.212.629-24', '86946-091', 'Rua Sr(a). Felipe Carvalho - numero 975 apt. 014', 1999);
+
+SELECT * FROM usuarios WHERE nome like 'Felipe%';

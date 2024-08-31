@@ -7,3 +7,4 @@ CREATE TABLE usuarios (
 	
 );
 
+SELECT * FROM usuarios WHERE nome like 'Felipe%';
